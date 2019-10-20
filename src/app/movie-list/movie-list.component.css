@@ -1,0 +1,81 @@
+.movies-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movies-list .card {
+  margin: 0.2em;
+  width: calc(100% - 0.5em);
+}
+
+.movies-list .card .card-img-top {
+  display: inline-block;
+  height: 353px;
+}
+
+.movies-list .card .movie-image {
+  position: relative;
+}
+
+.movies-list .card .movie-genre {
+  position: absolute;
+  bottom: 0.2em;
+  left: 0.2em;
+  right: 0.2em
+}
+
+.movies-list .card .favorite {
+  position: absolute;
+  top: 0.1em;
+  right: 0.1em;
+  font-size: 3em;
+  line-height: 0.6em;
+  color: white;
+  background-color: #666;
+  padding: 0.1em;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+}
+
+.movies-list .card .favorite a {
+  text-decoration: none;
+  color: white;
+}
+
+.movies-list .card .favorite a.favorite-movie {
+  color: #FFEB3B;
+}
+
+.movies-list .card .favorite a:hover {
+  color: #FF5722;
+}
+
+.movies-list .card .movie-genre span.badge {
+  margin-right: 0.1em;
+}
+
+@media screen and (min-width: 500px) {
+  .movies-list .card {
+    width: calc(50% - 0.5em);
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .movies-list .card {
+    width: calc(33.3% - 0.5em);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .movies-list .card {
+    width: calc(25% - 0.5em);
+  }
+}
+
+@media screen and (min-width: 1250px) {
+  .movies-list .card {
+    width: calc(20% - 0.5em);
+  }
+}

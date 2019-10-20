@@ -1,0 +1,33 @@
+
+<div class="movies-list">
+  <div *ngIf="movieList.length === 0">No movies found.</div>
+  <div class="card" *ngFor="let movie of movieList">
+    <div class="movie-image">
+      <div class="favorite">
+        <a [routerLink]="[]" (click)="toggleFavorite(movie)" [ngClass]="{ 'favorite-movie': movie.is_favorite }"
+          title="{{ movie.is_favorite ? 'Unfavorite' : 'Favorite' }}">♥</a>
+      </div>
+      <a [routerLink]="['/details', movie.id]">
+        <img *ngIf="movie.poster_path === ''" src="/assets/256x353.png" class="card-img-top" alt="{{ movie.title + ' movie poster.' }}" title="Display movie details">
+        <img *ngIf="movie.poster_path !== ''" appLazyLoad src="/assets/256x353.png" attr.data-src="https://image.tmdb.org/t/p/w185{{movie.poster_path}}"
+        class="card-img-top" alt="{{ movie.title + ' movie poster.' }}" title="Display movie details">
+      </a>
+
+
+      <div class="movie-genre">
+        <span *ngFor="let genre of movie.genres" class="badge badge-primary">{{genre.name}}</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="mb-3">
+        <small class="text-muted"><strong>Release date:</strong> {{movie.release_date}}</small>
+      </div>
+
+      <h5 class="card-title">{{movie.title}}</h5>
+      <p class="card-text overview">{{movie.overview | textTrunc}}</p>
+    </div>
+    <div class="card-footer text-muted">
+      <a [routerLink]="['/details', movie.id]" class="btn btn-dark w-100">Details...</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="movie-details">
+  <div class="movie-image">
+      <img *ngIf="movie.poster_path === ''" src="/assets/256x353.png" class="movie-poster" alt="{{ movie.title + ' movie poster.' }}">
+      <img *ngIf="movie.poster_path !== ''" appLazyLoad src="/assets/256x353.png" attr.data-src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"
+        class="movie-poster" alt="{{ movie.title + ' movie poster.' }}">
+  </div>
+
+  <div class="movie-overview">
+      <h2>{{movie.title}}</h2>
+      <div class="movie-genre">
+        <span *ngFor="let genre of movie.genres" class="badge badge-primary">{{genre['name']}}</span>
+      </div>
+      <p *ngIf="movie.status"><strong>Release date:</strong> {{movie.release_date}}</p>
+
+      <p><a [routerLink]="[]" (click)="toggleFavorite(movie)" [ngClass]="{ badge: true, 'badge-danger': movie.is_favorite, 'badge-success': !movie.is_favorite }"
+        title="{{ movie.is_favorite ? 'Unfavorite' : 'Favorite' }}">{{ movie.is_favorite ? '🚮 Remove from favorites' : 'Add to favorites' }}</a></p>
+
+      <p>{{movie.overview}}</p>
+
+      <p *ngIf="movie.homepage !== ''" class="my-1">
+        <strong>Homepage: </strong>
+        <a [href]="movie.homepage">{{movie.homepage}}</a>
+      </p>
+  </div>
+
+  <div class="movie-information">
+      <h3>Information</h3>
+
+      <p class="my-1"><strong>Budget:</strong> {{movie.budget | currency}}</p>
+      <p class="my-1"><strong>Revenue:</strong> {{movie.revenue | currency}}</p>
+      <p class="my-1"><strong>Popularity:</strong> {{movie.popularity}}</p>
+      <p class="my-1"><strong>Vote count:</strong> {{movie.vote_count}}</p>
+      <p class="my-1"><strong>Vote average:</strong> {{movie.vote_average}}</p>
+
+      <div *ngIf="movie.production_companies && movie.production_companies.length > 0">
+        <h3>Production Companies</h3>
+        <ul class="companies">
+          <li class="company-details" *ngFor="let company of movie.production_companies">
+            <span class="company-logo">
+              <img *ngIf="company.logo_path !== ''" appLazyLoad src="/assets/logo92x92.png" attr.data-src="https://image.tmdb.org/t/p/w92{{company.logo_path}}"
+              alt="">
+              <img *ngIf="company.logo_path === ''" src="/assets/logo92x92.png" alt="">
+            </span>
+            <span class="company-name">
+              <span>{{company.name}}</span>
+              <span *ngIf="company.origin_country != ''">{{company.origin_country}}</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+      <h3>Actors</h3>
+      <div class="movie-actors">
+        <div class="card" *ngFor="let actor of movie.actors">
+            <img *ngIf="actor.profile_path !== ''" appLazyLoad class="card-img-top" src="/assets/logo92x92.png" attr.data-src="https://image.tmdb.org/t/p/w185{{actor.profile_path}}"
+            alt="">
+            <img *ngIf="actor.profile_path === ''" class="card-img-top" src="/assets/logo92x92.png" alt="">
+            <div class="card-footer text-muted text-center">
+                <small><em>{{actor.name}}</em></small><br>
+                feat<br>
+                <small><strong>{{actor.character}}</strong></small>
+              </div>
+        </div>
+
+      </div>
+  </div>
+</div>
