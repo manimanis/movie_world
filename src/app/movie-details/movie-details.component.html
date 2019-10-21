@@ -26,8 +26,8 @@
   <div class="movie-information">
       <h3>Information</h3>
 
-      <p class="my-1"><strong>Budget:</strong> {{movie.budget | currency}}</p>
-      <p class="my-1"><strong>Revenue:</strong> {{movie.revenue | currency}}</p>
+      <p *ngIf="movie.budget != 0" class="my-1"><strong>Budget:</strong> {{movie.budget | currency}}</p>
+      <p *ngIf="movie.budget != 0" class="my-1"><strong>Revenue:</strong> {{movie.revenue | currency}}</p>
       <p class="my-1"><strong>Popularity:</strong> {{movie.popularity}}</p>
       <p class="my-1"><strong>Vote count:</strong> {{movie.vote_count}}</p>
       <p class="my-1"><strong>Vote average:</strong> {{movie.vote_average}}</p>

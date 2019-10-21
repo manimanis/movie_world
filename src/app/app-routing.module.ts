@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FavoriteMoviesComponent } from './favorite-movies/favorite-movies.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { SearchMovieComponent } from './search-movie/search-movie.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'details/:id',
     component: MovieDetailsComponent,
+  },
+  {
+    path: 'search/:keywords',
+    component: SearchMovieComponent,
   },
   {
     path: '',

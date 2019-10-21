@@ -73,7 +73,7 @@ export class TmdbService {
     const url = `${this.baseUrl}/search/movie?api_key=${this.apiKey}&include_adult=false&query=${encodeURI(keywords)}`;
     return this.http.get(url)
       .toPromise()
-      .then((data: any) => this.handleDiscover(data.results));
+      .then((data: any) => this.handleDiscover(data));
   }
 
   details(id: number) {

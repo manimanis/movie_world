@@ -11,6 +11,10 @@ export class AppComponent {
   constructor(private router: Router) { }
 
   onSearch(form_value: any) {
+    if (!form_value.keywords) {
+      alert('You must type in a keyword to search for!');
+      return;
+    }
     this.router.navigate(['search', form_value.keywords]);
   }
 

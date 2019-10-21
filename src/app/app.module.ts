@@ -11,6 +11,7 @@ import { TextTruncPipe } from './text-trunc.pipe';
 import { LazyLoadDirective } from './directives/lazy-load.directive';
 import { FavoriteMoviesComponent } from './favorite-movies/favorite-movies.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { SearchMovieComponent } from './search-movie/search-movie.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     TextTruncPipe,
     LazyLoadDirective,
     FavoriteMoviesComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    SearchMovieComponent
   ],
   imports: [
     BrowserModule,
